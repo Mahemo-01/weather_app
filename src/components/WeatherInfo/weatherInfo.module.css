@@ -1,0 +1,92 @@
+.card{
+  height: calc(100% - 3rem);
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.weatherBox {
+  text-align: center;
+}
+
+.weatherBox img {
+  width: 60%;
+  margin-top: 2rem;
+}
+
+.temperature {
+  position: relative;
+  text-align: center;
+  color: #06283D;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-top: 2rem;
+}
+
+.temperature::after{
+  content: '°C';
+  position: absolute;
+  font-size: 2rem;
+}
+
+.details {
+  color: #06283D;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+
+
+
+.weatherDetails {
+  width: 100%;
+  display: flex;
+  /* margin-top: 2rem; */
+}
+
+.stats {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.stats svg {
+  color: #06283D;
+  font-size: 3rem;
+}
+
+.stats :is(span, p){
+  color: #06283D;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* .not-found {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  scale: 0;
+  opacity: 0;
+  display: none;
+}
+
+.not-found img {
+  width: 70%;
+}
+
+.not-found p {
+  color: #06283D;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 12px;
+} */
+
+/* .weatherBox,
+.weatherDetails {
+  scale: 0;
+  opacity: 0;
+} */
