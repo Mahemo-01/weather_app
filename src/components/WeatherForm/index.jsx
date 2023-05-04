@@ -15,8 +15,8 @@ export function WeatherForm({ onChangeCity }) {
   function handleSubmit(e) {
     e.preventDefault()
 
+    if (!city || city.length <= 3) return null
     onChangeCity(city)
-
   }
 
   return (

@@ -1,10 +1,21 @@
 // import styles from "./{componente}.module.css"
+import { useEffect, useState } from "react"
 import { WeatherForm } from '../WeatherForm'
-import { useState } from "react"
+import { WeatherInfo } from '../WeatherInfo'
 
 
 export function WeatherApp() {
   const [weather, setWeather] = useState(null)
+
+  useEffect(() => {
+    loadInfo()
+  }, [])
+
+  useEffect(() => {
+    document.title = `Weather | ${weather?.location.name ?? ''}`
+  }, [weather])
+
+
 
   async function loadInfo(city = 'London') {
     const url = import.meta.env.VITE_REACT_APP_URL
@@ -14,15 +25,21 @@ export function WeatherApp() {
       const request = await fetch(`${url}&key=${key}&q=${city}`)
       const result = await request.json()
 
-      console.log('valor json:', result)
+      if (result.error) {
+        setWeather(null)
+        return null
+      }
 
-      setWeather(result)
+      setTimeout(() => {
+        setWeather(result)
+      }, 100)
 
-      console.log('valor despues del set', weather.current)
-
-
-    } catch (error) { }
-    console.log(weather.current)
+    } catch (e) {
+      return {
+        ok: false,
+        error: e.message
+      }
+    }
   }
 
   function handleChangeCity(city) {
@@ -33,8 +50,7 @@ export function WeatherApp() {
   return (
     <div>
       <WeatherForm onChangeCity={handleChangeCity}></WeatherForm>
-      <div>hola</div>
-      <div> {weather?.current.temp_c} </div>
+      <WeatherInfo weather={weather}></WeatherInfo>
     </div>
   )
 }
