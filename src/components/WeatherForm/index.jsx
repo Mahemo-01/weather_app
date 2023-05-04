@@ -1,5 +1,6 @@
-// import styles from "./{componente}.module.css"
+import styles from "./weatherForm.module.css"
 import { useState } from "react"
+import { FaMapMarkerAlt, FaSearch } from "react-icons/fa"
 
 
 export function WeatherForm({ onChangeCity }) {
@@ -20,8 +21,16 @@ export function WeatherForm({ onChangeCity }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" onChange={handleOnChange} />
+    <form onSubmit={handleSubmit} className={styles.searchBox}>
+      <div>
+        <FaMapMarkerAlt></FaMapMarkerAlt>
+      </div>
+
+      <input type="text" onChange={handleOnChange} placeholder="search location" />
+
+      <button>
+        <FaSearch></FaSearch>
+      </button>
     </form>
   )
 }

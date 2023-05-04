@@ -1,7 +1,7 @@
-// import styles from "./{componente}.module.css"
+import styles from "./loading.module.css"
 
-export function WeatherForm({ onChangeCity }) {
+export function Loading() {
   return (
-    <dir></dir>
+    <dir className={styles.card}></dir>
   )
 }

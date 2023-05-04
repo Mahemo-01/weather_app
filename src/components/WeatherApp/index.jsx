@@ -1,8 +1,9 @@
-// import styles from "./{componente}.module.css"
 import { useEffect, useState } from "react"
 import { WeatherForm } from '../WeatherForm'
 import { WeatherInfo } from '../WeatherInfo'
+import { Loading } from '../Loading'
 
+import styles from "./weatherApp.module.css"
 
 export function WeatherApp() {
   const [weather, setWeather] = useState(null)
@@ -14,8 +15,6 @@ export function WeatherApp() {
   useEffect(() => {
     document.title = `Weather | ${weather?.location.name ?? ''}`
   }, [weather])
-
-
 
   async function loadInfo(city = 'London') {
     const url = import.meta.env.VITE_REACT_APP_URL
@@ -32,7 +31,7 @@ export function WeatherApp() {
 
       setTimeout(() => {
         setWeather(result)
-      }, 100)
+      }, 2000)
 
     } catch (e) {
       return {
@@ -48,9 +47,9 @@ export function WeatherApp() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <WeatherForm onChangeCity={handleChangeCity}></WeatherForm>
-      <WeatherInfo weather={weather}></WeatherInfo>
+      {weather ? <WeatherInfo weather={weather} /> : <Loading />}
     </div>
   )
 }

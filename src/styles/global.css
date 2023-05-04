@@ -25,6 +25,10 @@ body {
   min-height: 100vh;
   background-color: var(--black-color);
   color: var(--white-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body::-webkit-scrollbar {
@@ -33,6 +37,7 @@ body::-webkit-scrollbar {
 
 input {
   outline: none;
+  border: none;
 }
 
 button {
